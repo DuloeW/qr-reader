@@ -8,6 +8,7 @@ const App = () => {
   }, [])
 
   const startDetection = () => {
+    
     const scanner = new Html5QrcodeScanner('barcode-detection', {
       qrbox: {
         width: 200,
@@ -15,8 +16,6 @@ const App = () => {
       },
       fps: 20,
     });
-
-    scanner.render(success, error);
 
     const success = (result) => {
       console.log(result)
@@ -26,6 +25,9 @@ const App = () => {
     const error = (error) => {
       console.log(error)
     }
+
+    scanner.render(success, error);
+
   }
 
   // const startDetection = async () => {
@@ -67,7 +69,7 @@ const App = () => {
   return (
     <div>
       {/* <video id='barcode-detection'></video> */}
-      <div id='barcode-detection'></div>
+      <div id='barcode-detection' style={{width: 200}}></div>
     </div>
   )
 }
