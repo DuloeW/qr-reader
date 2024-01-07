@@ -12,7 +12,7 @@ const App = () => {
     let video = document.getElementById("barcode-detection")
     video.srcObject = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
 
-    let barcodeDetector = new BarcodeDetector({ format: ["qr_code"] })
+    let barcodeDetector = new BarcodeDetector({ format: ["ean_13"] })
 
     setTimeout(async () => {
       let canvas = document.createElement('canvas');
@@ -32,7 +32,11 @@ const App = () => {
           let barcodeData = barcodes[0].rawValue;
           alert("Detected barcode " + barcodeData);
         }
+
+        // Check again in 10ms
+        setTimeout(() => requestAnimationFrame(checkForQrCode), 10);
       };
+
       await checkForQrCode();
     }, 1000);
   }
