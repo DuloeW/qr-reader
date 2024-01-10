@@ -76,7 +76,7 @@ const App = () => {
   return (
     <div>
       <video id='barcode-detection-video' style={{width: "100%"}}></video>
-      <button><a href={data.data}></a></button>
+      <button><a href={data.data}>Lanjut</a></button>
       {/* <div id='barcode-detection' style={{width: 400}}></div>
       <div id="result"></div> */}
     </div>
