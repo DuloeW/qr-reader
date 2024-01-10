@@ -1,7 +1,8 @@
 import { Html5QrcodeScanner } from 'html5-qrcode'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const App = () => {
+  const [data, setData] = useState({data: ""})
 
   useEffect(() => {
     // startDetection()
@@ -61,6 +62,7 @@ const App = () => {
             if (barcodes.length > 0) {
                 let barcodeData = barcodes[0].rawValue;
                 alert("Detected barcode " + barcodeData);
+                setData(prev => ({...prev, data: barcodeData}))
             }
 
             // Check again in 10ms
@@ -74,8 +76,9 @@ const App = () => {
   return (
     <div>
       <video id='barcode-detection-video' style={{width: "100%"}}></video>
-      <div id='barcode-detection' style={{width: 400}}></div>
-      <div id="result"></div>
+      <button><a href={data.data}></a></button>
+      {/* <div id='barcode-detection' style={{width: 400}}></div>
+      <div id="result"></div> */}
     </div>
   )
 }
